@@ -1,0 +1,20 @@
+Checklist Microsoft Store — Easy iTransfer
+==========================================
+
+[x] Icono único (naranja, flechas de transferencia)
+[x] build/icon.ico + build/icon.png
+[x] Tiles AppX en build/appx/
+[x] Logos Partner Center en store/assets/
+[x] Política de privacidad in-app (/privacy.html)
+[x] Texto de listado ES (store/LISTING.es-ES.txt)
+[x] Guía Partner Center (store/PARTNER_CENTER.txt)
+[x] Script npm run build:store (genera AppX)
+[x] Script npm run build:exe (instalador desktop con icono)
+
+[ ] Cuenta Microsoft Partner Center
+[ ] Completar store/publisher.json con identidad real
+[ ] npm run build:store  →  subir .appx/.msix
+[ ] Capturas de pantalla 1366x768 o 1920x1080
+[ ] URL https pública de privacidad (misma política)
+[ ] Cuestionario de edad IARC
+[ ] Enviar a certificación

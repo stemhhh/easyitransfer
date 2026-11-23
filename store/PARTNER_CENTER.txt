@@ -1,0 +1,44 @@
+Easy iTransfer — preparación Microsoft Store
+============================================
+
+1) Cuenta
+   - Entra a https://partner.microsoft.com/dashboard
+   - Crea la app "Easy iTransfer" (producto Windows)
+
+2) Identidad (obligatorio antes del build final de Store)
+   En Partner Center → Identidad de la aplicación, copia:
+
+   Nombre del paquete (Package/Identity/Name)  →  identityName
+   Editor (Publisher)                          →  publisher  (CN=...)
+   Nombre para mostrar del editor              →  publisherDisplayName
+
+   Pégalos en:  store/publisher.json
+   Luego ejecuta:  npm run build:store
+
+3) Icono
+   Ya generado en:
+   - build/icon.ico / build/icon.png
+   - build/appx/*  (tiles Store)
+   - store/assets/logo-512.png
+
+4) Capturas (tú las subes en Partner Center)
+   Tamaños habituales: 1366×768 o 1920×1080
+   Mínimo 1; recomendado 3–5 mostrando: inicio, QR/grupo, transferencia
+
+5) Listado (borrador en store/LISTING.es-ES.txt)
+
+6) Privacidad
+   Página incluida en la app:  /privacy.html
+   Cuando tengas dominio, publica la misma política en una URL https
+   y pégala en Partner Center → Propiedades → Directiva de privacidad
+
+7) Clasificación por edades
+   Completa el cuestionario IARC en Partner Center (app de utilidad / transferencia)
+
+8) Capacidad de red
+   La app usa red local (servidor en LAN). Decláralo en capacidades si el
+   cuestionario lo pide. No usa micrófono, cámara ni ubicación.
+
+9) Envío
+   Sube el .appx / .msix generado en dist/
+   Partner Center firmará/validará el paquete con tu identidad de Store.

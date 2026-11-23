@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#ff6a00" />
+  <title>Easy iTransfer</title>
+  <link rel="icon" type="image/png" href="/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="app-drag" aria-hidden="true"></div>
+
+  <button type="button" class="btn-quit hidden" id="btn-quit">Cerrar</button>
+
+  <main id="app">
+    <!-- HOME -->
+    <section id="view-home" class="view">
+      <header class="brand">
+        <div class="mark" aria-hidden="true">⇄</div>
+        <p class="logo">Easy iTransfer</p>
+        <p class="tagline">Grupo local, QR y archivos sin límite. Sin internet.</p>
+      </header>
+
+      <div class="home-tiles">
+        <button type="button" class="tile tile-create" id="btn-create">
+          <span class="tile-icon">＋</span>
+          <span class="tile-title">Crear grupo</span>
+          <span class="tile-sub">En esta PC · muestra el QR</span>
+        </button>
+        <button type="button" class="tile tile-join" id="btn-show-join">
+          <span class="tile-icon">〉</span>
+          <span class="tile-title">Unirse</span>
+          <span class="tile-sub">Con código o desde el QR</span>
+        </button>
+      </div>
+
+      <p class="legal-link"><a href="/privacy.html">Privacidad</a></p>
+
+      <form id="join-form" class="panel join-panel hidden" autocomplete="off">
+        <label>
+          Código del grupo
+          <input id="join-room" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="1234" required />
+        </label>
+        <label>
+          Clave (6 dígitos)
+          <input id="join-pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="••••••" required />
+        </label>
+        <label>
+          Tu nombre <span class="optional">(opcional)</span>
+          <input id="join-name" maxlength="24" placeholder="iPhone" />
+        </label>
+        <button type="submit" class="btn btn-primary">Entrar al grupo</button>
+        <p id="join-error" class="error hidden"></p>
+      </form>
+    </section>
+
+    <!-- GROUP — QR grande + gente (host) -->
+    <section id="view-host" class="view hidden">
+      <header class="group-head">
+        <p class="eyebrow">Tu grupo</p>
+        <p class="group-code mono"><span id="host-room">----</span> · <span id="host-pin">------</span></p>
+      </header>
+
+      <div class="qr-hero">
+        <img id="host-qr" width="240" height="240" alt="QR del grupo" />
+        <p class="hint">El iPhone escanea y entra solo. Misma Wi‑Fi o hotspot.</p>
+        <label class="qr-url-pick hidden" id="qr-url-pick-wrap">
+          Red
+          <select id="qr-url-select"></select>
+        </label>
+      </div>
+
+      <div class="peers-strip">
+        <p class="section-label">En el grupo</p>
+        <ul id="host-members-list" class="avatars"></ul>
+      </div>
+
+      <ul id="host-urls" class="urls compact"></ul>
+
+      <button type="button" class="btn btn-primary" id="btn-enter-room">Ir a enviar archivos</button>
+    </section>
+
+    <!-- ROOM -->
+    <section id="view-room" class="view hidden">
+      <header class="room-bar">
+        <div>
+          <p class="logo sm">Easy iTransfer</p>
+          <p class="room-meta">
+            Grupo <span class="mono" id="room-code">----</span>
+            <span id="room-pin-wrap" class="hidden"> · <span class="mono" id="room-pin">------</span></span>
+          </p>
+        </div>
+        <button type="button" class="btn btn-tiny" id="btn-leave">Salir</button>
+      </header>
+
+      <div class="peers">
+        <p class="section-label">Toca a quién enviarle</p>
+        <ul id="members-list" class="avatars sendable"></ul>
+      </div>
+
+      <div class="send-zone" id="drop-zone">
+        <input type="file" id="file-input" multiple hidden />
+        <button type="button" class="send-fab" id="btn-pick" aria-label="Elegir archivos">
+          <span class="fab-plus">↑</span>
+        </button>
+        <p class="send-title">Enviar archivos</p>
+        <p class="send-hint">Elige archivos y toca un dispositivo. Sin límite de tamaño.</p>
+        <select id="target-select" class="hidden" aria-hidden="true"></select>
+      </div>
+
+      <div class="transfers">
+        <p class="section-label">Transferencias</p>
+        <ul id="transfers-list" class="transfer-list">
+          <li class="empty" id="transfers-empty">Aún no hay transferencias</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="view-closed" class="view hidden">
+      <header class="brand">
+        <div class="mark" aria-hidden="true">⇄</div>
+        <p class="logo">Easy iTransfer</p>
+        <p class="tagline">Grupo cerrado. El servidor ya no está activo.</p>
+      </header>
+      <p class="closed-note">Cierra la ventana. Al abrir de nuevo, empieza un grupo nuevo.</p>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

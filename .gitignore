@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.*
+.wrangler/
+.dev.vars
+build/appx-identity.json
+store/publisher.json
+*.blockmap
+.vscode/
+.idea/
+site/node_modules/

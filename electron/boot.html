@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Easy iTransfer</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #fff7f0;
+      color: #1a120c;
+      overflow: hidden;
+      -webkit-app-region: drag;
+      user-select: none;
+    }
+    .wrap {
+      height: 100%;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      gap: 14px;
+      padding: 24px;
+    }
+    .mark {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #ff8a33, #e55d00);
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 28px rgba(255, 106, 0, 0.28);
+      animation: pop 0.35s ease both;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      animation: pop 0.4s ease 0.05s both;
+    }
+    p {
+      margin: 0;
+      color: #7a6558;
+      font-weight: 600;
+      font-size: 0.95rem;
+      animation: pop 0.45s ease 0.1s both;
+    }
+    .bar {
+      width: 120px;
+      height: 4px;
+      margin: 8px auto 0;
+      border-radius: 999px;
+      background: rgba(26, 18, 12, 0.08);
+      overflow: hidden;
+      animation: pop 0.45s ease 0.12s both;
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      width: 40%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ff8a33, #e55d00);
+      animation: slide 0.9s ease-in-out infinite;
+    }
+    @keyframes pop {
+      from { opacity: 0; transform: translateY(8px) scale(0.96); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes slide {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(300%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="mark" aria-hidden="true">⇄</div>
+    <h1>Easy iTransfer</h1>
+    <p>Iniciando…</p>
+    <div class="bar"><i></i></div>
+  </div>
+</body>
+</html>

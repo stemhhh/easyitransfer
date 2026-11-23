@@ -1,0 +1,79 @@
+{
+  "name": "easyitransfer",
+  "version": "1.0.0",
+  "description": "Transfiere archivos entre tu PC y el iPhone en la misma Wi‑Fi. Grupo local, QR, sin límite de tamaño.",
+  "author": "Easy iTransfer",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "server": "node server.js",
+    "dev": "electron .",
+    "icons": "node scripts/generate-icons.js",
+    "build:exe": "npm run icons && electron-builder --win nsis --x64",
+    "build:store": "npm run icons && node scripts/build-store.js"
+  },
+  "build": {
+    "appId": "com.easyitransfer.app",
+    "productName": "Easy iTransfer",
+    "copyright": "Copyright © Easy iTransfer",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "public/**/*",
+      "server.js",
+      "package.json"
+    ],
+    "asar": true,
+    "compression": "maximum",
+    "icon": "build/icon.ico",
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "Easy iTransfer",
+      "runAfterFinish": true,
+      "artifactName": "EasyiTransfer-Setup.exe",
+      "deleteAppDataOnUninstall": true,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico"
+    },
+    "appx": {
+      "applicationId": "EasyiTransfer",
+      "displayName": "Easy iTransfer",
+      "identityName": "REPLACE.EasyiTransfer",
+      "publisher": "CN=REPLACE-WITH-PARTNER-CENTER-PUBLISHER-ID",
+      "publisherDisplayName": "REPLACE_PUBLISHER_DISPLAY_NAME",
+      "languages": ["es-es", "en-us"],
+      "showNameOnTiles": true,
+      "setBuildNumber": true,
+      "backgroundColor": "#FF6A00"
+    }
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "electron": "^35.1.5",
+    "electron-builder": "^26.0.12",
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.5"
+  }
+}

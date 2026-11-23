@@ -1,0 +1,36 @@
+Nombre
+------
+Easy iTransfer
+
+Descripción breve (≤200 caracteres aprox.)
+------------------------------------------
+Transfiere archivos entre tu PC y el iPhone en la misma Wi‑Fi. Crea un grupo, escanea el QR y envía sin límite de tamaño.
+
+Descripción completa
+--------------------
+Easy iTransfer te permite enviar y recibir archivos entre tu PC y otros dispositivos (como un iPhone) usando solo tu red local.
+
+• Crea un grupo en la PC con un código y una clave
+• Muestra un QR para que el iPhone entre al instante
+• Envía fotos, videos, documentos o cualquier archivo — sin límite de tamaño
+• No hace falta internet: solo la misma Wi‑Fi o un hotspot
+• Al cerrar la app, el servidor se apaga y la sesión desaparece
+
+Ideal para pasar archivos rápido sin cables, sin cuentas y sin subir nada a la nube.
+
+Categoría
+---------
+Utilidades / Productividad
+
+Palabras clave
+--------------
+transferir archivos, wifi, iphone, pc, qr, local, compartir, sin cable
+
+URL de privacidad
+-----------------
+(Publica public/privacy.html en https://… y pega la URL aquí / en Partner Center)
+
+Notas de certificación
+----------------------
+- La app abre un servidor HTTP local solo mientras está en ejecución.
+- Requiere acceso a red privada/local para conectar dispositivos cercanos.
